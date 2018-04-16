@@ -1,3 +1,22 @@
+/* The animation code */
+@keyframes sideBarOut {
+  from {
+    width: 0;
+  }
+  to {
+    width: 250px;
+  }
+}
+
+@keyframes sideBarIn {
+  from {
+    width: 250px;
+  }
+  to {
+    width: 0px;
+  }
+}
+
 /* Sidebar */
 #sidebar-wrapper {
   z-index: 1;
@@ -6,6 +25,8 @@
   height: 100%;
   overflow-y: hidden;
   background: #2c3e50;
+  animation-name: sideBarIn;
+  animation-duration: 1s;
 }
 
 /* Main content */
@@ -18,6 +39,8 @@
 /* Change the width of the sidebar to display it */
 #wrapper.menuDisplayed #sidebar-wrapper {
   width: 250px;
+  animation-name: sideBarOut;
+  animation-duration: 1s;
 }
 
 /* Change the width of the maincontent area when sidebar is shown */

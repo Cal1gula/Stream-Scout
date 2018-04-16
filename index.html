@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 
+    <!-- Font Awesome Icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+        crossorigin="anonymous"></script>
+
     <!-- App specific styling -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
@@ -18,19 +22,55 @@
 
 <body>
 
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" id="menu-toggle" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="navbar-brand mb-0 h1 text-right">Stream Scout</span>
+        </nav>
+    </div>
+
     <div id="wrapper">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="#">
+                        <i class="fas fa-search fa-lg"></i>&nbsp; &nbsp; Search
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Search</a>
+                    <a href="#">
+                        <i class="fab fa-twitch fa-lg"></i>&nbsp; &nbsp; Twitch Username
+                    </a>
                 </li>
                 <li>
-                    <a href="#">Login</a>
+                    <a href="#">
+                        <i class="far fa-clock fa-lg"></i>&nbsp; &nbsp; Schedule
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-gamepad fa-lg"></i>&nbsp; &nbsp; Games
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-users fa-lg"></i>&nbsp; &nbsp; Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-discord fa-lg"></i>&nbsp; &nbsp; Discord
+                    </a>
                 </li>
             </ul>
         </div>
@@ -41,13 +81,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-md-3" style="background: lightblue;">
-
-                        <!-- This button needs to go in navbar -->
-                        <a href="#" class="btn btn-success" id="menu-toggle">Search</a>
-                        <!-- This button needs to go in navbar -->
-
                         <h3>Search results (Entire width on phone)</h3>
-
                     </div>
                     <div class="col-xs-12 col-md-3" style="background: lightcoral;">
                         <h3>Search results (Entire width on phone)</h3>
@@ -66,8 +100,14 @@
     </div>
 
     <!-- JQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
     <!-- Javascript file -->
     <script src="assets/javascript/app.js"></script>
 </body>
