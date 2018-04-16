@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Stream Scout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
 
     <!-- Font Awesome Icons -->
@@ -22,94 +22,177 @@
 
 <body>
 
+    <!-- NAV Bar -->
     <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <h4 class="text-white">Collapsed content</h4>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" id="menu-toggle" type="button">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- <a href="#" data-target="#sidebar" data-toggle="collapse">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <span class="navbar-brand mb-0 h1 text-right">Stream Scout</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link navbar-brand" href="#" data-target="#sidebar" data-toggle="collapse">
+                            <i class="fas fa-bars"></i>&nbsp; Stream Scout
+                        </a>
+                    </li>
+                </ul>
+                <span class="nav-item navbar-text">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-twitch fa-lg"></i>&nbsp; Login
+                    </a>
+                </span>
+
+            </div>
         </nav>
     </div>
 
-    <div id="wrapper">
+    <div class="container-fluid">
+        <div class="row d-flex d-md-block flex-nowrap wrapper">
+            <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                <!-- Search Button -->
+                <div class="list-group border-0 card text-center text-md-left">
+                    <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-search"></i>
+                        <span class="d-none d-md-inline">Search</span>
+                    </a>
+                    <!-- Search options drop down -->
+                    <div class="collapse" id="menu1" data-parent="#sidebar">
+                        <!-- Un-comment if you want a sub-menu -->
+                        <!-- <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false"> -->
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-user"></i>
+                            <span class="d-none d-md-inline">Username</span>
+                        </a>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="#">
-                        <i class="fas fa-search fa-lg"></i>&nbsp; &nbsp; Search
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fab fa-twitch fa-lg"></i>&nbsp; &nbsp; Twitch Username
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="far fa-clock fa-lg"></i>&nbsp; &nbsp; Schedule
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-gamepad fa-lg"></i>&nbsp; &nbsp; Games
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-users fa-lg"></i>&nbsp; &nbsp; Users
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fab fa-discord fa-lg"></i>&nbsp; &nbsp; Discord
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- End sidebar -->
+                        <!-- SUB MENU -->
+                        <!-- <div class="collapse" id="menu1sub1" data-parent="#menu1">
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem a</a>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem b</a>
+                            <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem c </a>
+                            <div class="collapse" id="menu1sub1sub1">
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.1</a>
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.2</a>
+                            </div>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem d</a>
+                            <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem e </a>
+                            <div class="collapse" id="menu1sub1sub2">
+                                <a href="#" class="list-group-item">Subitem e.1</a>
+                                <a href="#" class="list-group-item">Subitem e.2</a>
+                            </div>
+                        </div> -->
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span class="d-none d-md-inline">Currently Playing</span>
+                        </a>
+                        <!-- Un-comment if you want a SUB Menu -->
+                        <!-- <a href="#menu1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false"> -->
+                        <!-- SUB MENU -->
+                        <!-- <div class="collapse" id="menu1sub2" data-parent="#menu1">
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
+                            <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3 c </a>
+                            <div class="collapse" id="menu1sub1sub1">
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
+                            </div>
+                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
+                            <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 5 e </a>
+                            <div class="collapse" id="menu1sub1sub2">
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
+                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
+                            </div>
+                        </div> -->
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-video"></i>
+                            <span class="d-none d-md-inline">Online</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="d-none d-md-inline">Schedule</span>
+                        </a>
+                    </div>
+                    <!-- End search bar -->
 
-        <!-- Page content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-md-3" style="background: lightblue;">
-                        <h3>Search results (Entire width on phone)</h3>
+                    <!-- Start My Profile -->
+                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">My Profile</span>
+                    </a>
+                    <div class="collapse" id="menu3" data-parent="#sidebar">
+                        <a href="#" class="list-group-item" data-parent="#menu3">
+                            <i class="fab fa-twitch"></i>
+                            <span class="d-none d-md-inline">Login with Twitch</span>
+                        </a>
+                        <a href="#" class="list-group-item" data-parent="#menu3">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="d-none d-md-inline">Sign Up</span>
+                        </a>
                     </div>
-                    <div class="col-xs-12 col-md-3" style="background: lightcoral;">
-                        <h3>Search results (Entire width on phone)</h3>
-                    </div>
-                    <div class="col-xs-12 col-md-3" style="background: #87e68f;">
-                        <h3>Search results (Entire width on phone)</h3>
-                    </div>
-                    <div class="col-xs-12 col-md-3" style="background: lightsalmon;">
-                        <h3>Search results (Entire width on phone)</h3>
-                    </div>
+                    <!-- End My Profile -->
+
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                        <i class="fa fa-heart"></i>
+                        <span class="d-none d-md-inline">Favorites</span>
+                    </a>
                 </div>
             </div>
-        </div>
-        <!-- End page content -->
 
+            <!-- Main Page Content Window -->
+            <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+                <div class="page-header">
+                    <h2>Stream Scout</h2>
+                </div>
+                <p class="lead">Find streamers you want to see, not just whose popular.</p>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button role="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true">
+                            horizontal collapsible
+                        </button>
+                        <div id="demo" class="width collapse show" aria-expanded="true">
+                            <div class="list-group" style="width:400px">
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <button role="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
+                            vertical collapsible
+                        </button>
+                        <div id="demo2" class="height collapse show" aria-expanded="true">
+                            <div>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 
-    <!-- JQuery library -->
+    <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <!-- Popper script -->
+    <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
     <!-- Javascript file -->
-    <script src="assets/javascript/app.js"></script>
+    <!-- <script src="assets/javascript/app.js"></script> -->
+    <script>
+    </script>
 </body>
 
 </html>
