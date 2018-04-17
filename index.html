@@ -25,13 +25,6 @@
     <!-- NAV Bar -->
     <div class="pos-f-t">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <!-- <a href="#" data-target="#sidebar" data-toggle="collapse">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -114,40 +107,66 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span class="d-none d-md-inline">Schedule</span>
                         </a>
+                        <span class="list-group-item">
+                            <input type="text" id="search-input" placeholder="Search.." name="search">
+                            <button type="submit" id="add-search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                     <!-- End search bar -->
 
                     <!-- Start My Profile -->
-                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+
+                    <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <span class="d-none d-md-inline">My Profile</span>
                     </a>
-                    <div class="collapse" id="menu3" data-parent="#sidebar">
-                        <a href="#" class="list-group-item" data-parent="#menu3">
+                    <div class="collapse" id="menu2" data-parent="#sidebar">
+                        <a href="#" class="list-group-item" data-parent="#menu2">
                             <i class="fab fa-twitch"></i>
                             <span class="d-none d-md-inline">Login with Twitch</span>
                         </a>
-                        <a href="#" class="list-group-item" data-parent="#menu3">
+                        <a href="#" class="list-group-item" data-parent="#menu2">
                             <i class="fas fa-user-plus"></i>
                             <span class="d-none d-md-inline">Sign Up</span>
                         </a>
                     </div>
+
                     <!-- End My Profile -->
 
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
+                    <!-- Start Favorites -->
+                    <!-- <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
                         <i class="fa fa-heart"></i>
                         <span class="d-none d-md-inline">Favorites</span>
+                    </a> -->
+
+                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-heart"></i>
+                        <span class="d-none d-md-inline">Favorites</span>
                     </a>
+                    <div class="collapse" id="menu3" data-parent="#sidebar">
+                        <!-- Put previous search results here -->
+                        <div id="pastSearches">
+                            <!-- JS Generated searches goes here -->
+                        </div>
+                    </div>
+
+                    <!-- End Favorites -->
                 </div>
             </div>
 
             <!-- Main Page Content Window -->
             <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+
+                <!-- Page header -->
                 <div class="page-header">
                     <h2>Stream Scout</h2>
                 </div>
-                <p class="lead">Find streamers you want to see, not just whose popular.</p>
+                <p class="lead">Find streamers you want to see, not just the most popular.</p>
                 <hr>
+
+                <!-- Search results -->
                 <div class="row">
                     <div class="col-lg-6">
                         <button role="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true">
@@ -190,7 +209,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
     <!-- Javascript file -->
-    <!-- <script src="assets/javascript/app.js"></script> -->
+    <script src="assets/javascript/app.js"></script>
     <script>
     </script>
 </body>
