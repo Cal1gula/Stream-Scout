@@ -101,64 +101,62 @@ function displaySearchResults() {
     });
   }
 
-  // Perfoming YouTube AJAX GET request
-  function youtubeGET() {
-    // Storing API URL and passing in the data-name
-    var queryURL =
-      "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=" +
-      search +
-      "&key=AIzaSyDDwkGgUnIek3GUnbLgjBNwwE4KPMu_T9k";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      // Stores the JSON object
-      var results = response.items;
-      console.log(results);
-
-      // Looping over every returned gif
-      for (var i = 0; i < results.length; i++) {
-        // Creating the responsive div
-        var searchDiv = $('<div class="col-sx-12 col-md-3 thumbnail">');
-        var searchImg = $("<img>");
-        searchImg.attr({
-          src: results[i].snippet.thumbnails.medium.url,
-          alt: results[i].snippet.title,
-          width: "100%",
-          "data-still": results[i].snippet.thumbnails.medium.url,
-          "data-animate": results[i].snippet.thumbnails.medium.url,
-          "data-state": "still"
-        });
-        var videoID = results[i].id.videoId;
-        console.log("https://www.youtube.com/watch?v=" + videoID);
-        // Adding the gif class allowing it to be clicked
-        searchImg.addClass("gif");
-        // Div for the gif caption / rating
-        var captDiv = $('<div class="caption">');
-        // Storing the result item's rating
-        var rating = results[i].rating;
-        // Adding the thumbnail caption
-        var p = $("<p>").text(
-          results[i].snippet.channelTitle +
-            ': "' +
-            results[i].snippet.title +
-            '"'
-        );
-
-        // Attaches the paragraph to the caption
-        captDiv.append(p);
-        // Attaches the image to the responsive div
-        searchDiv.append(searchImg);
-        // Attaches the caption div to the responsive div
-        searchDiv.append(captDiv);
-        // Prepends the responsive div to the search area
-        $("#searchResults").prepend(searchDiv);
-      }
-    });
-  }
   // Runs the YouTube API call
-  youtubeGET();
+  youtubeGET(search);
+}
+
+// Perfoming YouTube AJAX GET request
+function youtubeGET(search) {
+  // Storing API URL and passing in the data-name
+  var queryURL =
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=" +
+    search +
+    "&key=AIzaSyDDwkGgUnIek3GUnbLgjBNwwE4KPMu_T9k";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    // Stores the JSON object
+    var results = response.items;
+    console.log(results);
+
+    // Looping over every returned gif
+    for (var i = 0; i < results.length; i++) {
+      // Creating the responsive div
+      var searchDiv = $('<div class="col-sx-12 col-md-3 thumbnail">');
+      var searchImg = $("<img>");
+      searchImg.attr({
+        src: results[i].snippet.thumbnails.medium.url,
+        alt: results[i].snippet.title,
+        width: "100%",
+        "data-still": results[i].snippet.thumbnails.medium.url,
+        "data-animate": results[i].snippet.thumbnails.medium.url,
+        "data-state": "still"
+      });
+      var videoID = results[i].id.videoId;
+      console.log("https://www.youtube.com/watch?v=" + videoID);
+      // Adding the gif class allowing it to be clicked
+      searchImg.addClass("gif");
+      // Div for the gif caption / rating
+      var captDiv = $('<div class="caption">');
+      // Storing the result item's rating
+      var rating = results[i].rating;
+      // Adding the thumbnail caption
+      var p = $("<p>").text(
+        results[i].snippet.channelTitle + ': "' + results[i].snippet.title + '"'
+      );
+
+      // Attaches the paragraph to the caption
+      captDiv.append(p);
+      // Attaches the image to the responsive div
+      searchDiv.append(searchImg);
+      // Attaches the caption div to the responsive div
+      searchDiv.append(captDiv);
+      // Prepends the responsive div to the search area
+      $("#searchResults").prepend(searchDiv);
+    }
+  });
 }
 
 // Adds history when search is clicked
@@ -174,6 +172,8 @@ $("#add-search").on("click", function(event) {
 
   // Calling renderButtons which handles the processing of our movie array
   renderHistory();
+  youtubeGET(searchInput);
+  $("#search-input").val("");
 });
 
 // Adding a click event listener to all elements with a class of "movie-btn"
