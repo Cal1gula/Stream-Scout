@@ -28,7 +28,7 @@
             <div class="container-fluid" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link navbar-brand" href="#" data-target="#sidebar" data-toggle="collapse">
+                        <a class="nav-link navbar-brand" href="#" data-target="#sidebar" data-toggle="collapse" id="hamburger">
                             <i class="fas fa-bars"></i>&nbsp; Stream Scout
                         </a>
                     </li>
@@ -46,13 +46,12 @@
     <div class="container-fluid">
         <!-- Start Sidebar -->
         <div class="row d-flex d-md-block flex-nowrap wrapper">
-            <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+            <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
                 <!-- Search Button -->
                 <div class="list-group border-0 card text-center text-md-left">
                     <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-search"></i>
                         <span class="d-none d-md-inline">Search</span>
-                        <i class="fas fa-caret-down" id="searchCaret"></i>
                     </a>
                     <!-- Search options drop down -->
                     <div class="collapse" id="menu1" data-parent="#sidebar">
@@ -117,7 +116,7 @@
             <!-- End Sidebar -->
 
             <!-- Main Page Content Window -->
-            <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+            <main class="col-md-10 float-left col px-5 pl-md-2 pt-2 main" id="mainWindow">
 
                 <!-- Page header -->
                 <div class="page-header">
