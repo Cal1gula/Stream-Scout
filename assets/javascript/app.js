@@ -130,9 +130,9 @@ function youtubeGET(search) {
             searchFrame.attr({
                 id: videoID,
                 width: "100%",
+                src: "https://www.youtube.com/embed/" + videoID,
                 frameborder: 0,
-                allow: "autoplay; encrypted-media",
-                src: "https://www.youtube.com/embed/" + videoID
+                allow: "autoplay; encrypted-media"
             });
             var searchImg = $("<img>");
             searchImg.attr({
@@ -143,12 +143,10 @@ function youtubeGET(search) {
                 "data-animate": videoID,
                 "data-state": "still"
             });
-            console.log("https://www.youtube.com/watch?v=" + videoID);
             searchFrame.hide();
             // Adding the gif class allowing it to be clicked
-            searchDiv.addClass(videoID);
             searchImg.addClass("gif");
-            // searchImg.attr("id", videoID);
+            searchImg.attr("id", videoID);
             // Div for the gif caption / rating
             var captDiv = $('<div class="caption">');
             // Storing the result item's rating
@@ -204,6 +202,7 @@ $("body").on("click", ".gif", function () {
     if (state === "still") {
         $(this).hide();
         $("#" + vidId).show();
+        // $("#" + vidId).attr("src", "https://www.youtube.com/embed/" + vidId);
         // $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
         console.log("state: animate");
