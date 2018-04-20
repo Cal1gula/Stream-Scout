@@ -43,7 +43,7 @@
 /* closed state */
 
 #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-  content: " \f0d7";
+  /* content: " \f0d7"; */
   font-family: FontAwesome;
   display: inline;
   text-align: right;
@@ -57,7 +57,7 @@
 }
 
 #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-  content: " \f0da";
+  /* content: " \f0da"; */
   font-family: FontAwesome;
   display: inline;
   text-align: right;

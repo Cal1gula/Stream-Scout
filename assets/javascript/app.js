@@ -8,13 +8,21 @@ var searches = [
   "Deadmau5"
 ];
 
+// Sets savedHistory as our localStorage variable
+var savedHistory = JSON.parse(localStorage.getItem("history"));
+
+// Checks to see if savedHistory is currently an array, if not sets it to the value of searches and saves it to the localStorage
+if (!Array.isArray(savedHistory)) {
+  localStorage.setItem("history", JSON.stringify(searches));
+}
+
 // Render the favorites list
 function renderHistory() {
   // Delete previous searches to prevent duplicates)
   $("#pastSearches").empty();
 
   // Looping through the array of searches
-  for (var i = 0; i < searches.length; i++) {
+  for (var i = 0; i < savedHistory.length; i++) {
     // Dynamicaly generating search results for our favorites
     var a = $("<a>");
     var s = $("<span>");
@@ -25,13 +33,13 @@ function renderHistory() {
       // href: "https://www.youtube.com/watch?v=" + searches[i].items.id.videoId,
       href: "#",
       "data-parent": "#menu3",
-      "data-name": searches[i]
+      "data-name": savedHistory[i]
       // target: "_blank"
     });
     // Adding a class of searches to our menu
     s.addClass("d-none d-md-inline");
     // Adding the search text to the link (well span..)
-    s.text(searches[i]);
+    s.text(savedHistory[i]);
     // Adding the span to the anchor
     a.append(s);
     // Adding the searches to the menubar
@@ -41,68 +49,71 @@ function renderHistory() {
 
 // Renders our search results in the main viewing window
 function displaySearchResults() {
-  console.log("Clicked!");
   // Takes passes data-name into variable to be used in search url
   var search = $(this).attr("data-name");
-  console.log(search);
 
-  // Perfoming Giphy AJAX GET request
-  function giphyGET() {
-    // Storing API URL and passing in the data-name
-    var queryURL =
-      "https://api.giphy.com/v1/gifs/search?q=" +
-      search +
-      "&api_key=lErOc7LwRP3qB5bErzQyb5aBr0l8GXRs&limit=10";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      // Stores the JSON object
-      var results = response.data;
-      console.log(results);
-
-      // Looping over every returned gif
-      for (var i = 0; i < results.length; i++) {
-        // Censorship at it's finest
-        if (results[i].rating !== "r") {
-          // Creating the responsive div
-          var searchDiv = $('<div class="col-sx-12 col-md-3 thumbnail">');
-          var searchImg = $("<img>");
-          searchImg.attr({
-            src: results[i].images.original_still.url,
-            alt: results[i].title,
-            width: "100%",
-            "data-still": results[i].images.original_still.url,
-            "data-animate": results[i].images.original.url,
-            "data-state": "still"
-          });
-          // Adding the gif class allowing it to be clicked
-          searchImg.addClass("gif");
-          // Div for the gif caption / rating
-          var captDiv = $('<div class="caption">');
-          // Storing the result item's rating
-          var rating = results[i].rating;
-          // Adding the thumbnail caption
-          var p = $("<p>").text(
-            '"' + results[i].title + '"' + " Rating: " + rating
-          );
-
-          // Attaches the paragraph to the caption
-          captDiv.append(p);
-          // Attaches the image to the responsive div
-          searchDiv.append(searchImg);
-          // Attaches the caption div to the responsive div
-          searchDiv.append(captDiv);
-          // Prepends the responsive div to the search area
-          $("#searchResults").prepend(searchDiv);
-        }
-      }
-    });
+  // Pick your API call (WARNING: Changing this requires changing the click function below!)
+  // giphyGET();
+  // youtubeGET(search);
+  if ($("#giphy").is(":checked")) {
+    giphyGET(search);
+  } else if ($("#youtube").is(":checked")) {
+    youtubeGET(search);
   }
+}
 
-  // Runs the YouTube API call
-  youtubeGET(search);
+// Perfoming Giphy AJAX GET request -- You can call this instead of YouTube to have this display gifs instead...
+function giphyGET(search) {
+  // Storing API URL and passing in the data-name
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    search +
+    "&api_key=lErOc7LwRP3qB5bErzQyb5aBr0l8GXRs&limit=10";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    // Stores the JSON object
+    var results = response.data;
+
+    // Looping over every returned gif
+    for (var i = 0; i < results.length; i++) {
+      // Censorship at it's finest
+      if (results[i].rating !== "r") {
+        // Creating the responsive div
+        var searchDiv = $('<div class="col-sx-12 col-md-3 thumbnail">');
+        var searchImg = $("<img>");
+        searchImg.attr({
+          src: results[i].images.original_still.url,
+          alt: results[i].title,
+          width: "100%",
+          "data-still": results[i].images.original_still.url,
+          "data-animate": results[i].images.original.url,
+          "data-state": "still"
+        });
+        // Adding the gif class allowing it to be clicked
+        searchImg.addClass("gif");
+        // Div for the gif caption / rating
+        var captDiv = $('<div class="caption">');
+        // Storing the result item's rating
+        var rating = results[i].rating;
+        // Adding the thumbnail caption
+        var p = $("<p>").text(
+          '"' + results[i].title + '"' + " Rating: " + rating
+        );
+
+        // Attaches the paragraph to the caption
+        captDiv.append(p);
+        // Attaches the image to the responsive div
+        searchDiv.append(searchImg);
+        // Attaches the caption div to the responsive div
+        searchDiv.append(captDiv);
+        // Prepends the responsive div to the search area
+        $("#searchResults").prepend(searchDiv);
+      }
+    }
+  });
 }
 
 // Perfoming YouTube AJAX GET request
@@ -119,7 +130,6 @@ function youtubeGET(search) {
   }).then(function(response) {
     // Stores the JSON object
     var results = response.items;
-    console.log(results);
 
     // Looping over every returned gif
     for (var i = 0; i < results.length; i++) {
@@ -170,12 +180,12 @@ function youtubeGET(search) {
   });
 }
 
-// Dispays favorite icon on mouseover
-$("#fav" + "123").hover(function() {
-  $(this)
-    .children(".favOverlay")
-    .toggleClass("favOverlayHide");
-});
+// Dispays favorite icon on mouseover - This is for a favorites feature which will be implemented later
+// $("#fav" + "123").hover(function() {
+//   $(this)
+//     .children(".favOverlay")
+//     .toggleClass("favOverlayHide");
+// });
 
 // Adds history when search is clicked
 $("#add-search").on("click", function(event) {
@@ -186,11 +196,24 @@ $("#add-search").on("click", function(event) {
     .trim();
 
   // Adding movie from the textbox to our array
-  searches.push(searchInput);
+  savedHistory.push(searchInput);
+
+  if (savedHistory.length > 10) {
+    savedHistory.shift();
+  }
+
+  localStorage.setItem("history", JSON.stringify(savedHistory));
 
   // Calling renderButtons which handles the processing of our movie array
   renderHistory();
-  youtubeGET(searchInput);
+  console.log($("#giphy").attr("checked"));
+  console.log($("#youtube").attr("checked"));
+  if ($("#giphy").is(":checked")) {
+    giphyGET(searchInput);
+  } else if ($("#youtube").is(":checked")) {
+    youtubeGET(searchInput);
+  }
+
   $("#search-input").val("");
 });
 
@@ -202,24 +225,33 @@ $("body").on("click", ".gif", function() {
   // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
   var state = $(this).attr("data-state");
   var vidId = $(this).attr("data-animate");
-  console.log(vidId + " Clicked!");
 
   // If the clicked image's state is still, update its src attribute to what its data-animate value is.
   // Then, set the image's data-state to animate
   // Else set src to the data-still value
   if (state === "still") {
-    $(this).hide();
-    $("#" + vidId).show();
-    // $("#" + vidId).attr("src", "https://www.youtube.com/embed/" + vidId);
-    // $(this).attr("src", $(this).attr("data-animate"));
+    if ($("#giphy").is(":checked")) {
+      $(this).attr("src", $(this).attr("data-animate"));
+    } else if ($("#youtube").is(":checked")) {
+      $(this).hide(); // You must uncommented this for the youtubeGET(search) to work!
+      $("#" + vidId).show(); // You must uncommented this for the youtubeGET(search) to work!
+    }
+    // $(this).hide(); // You must uncommented this for the youtubeGET(search) to work!
+    // $("#" + vidId).show(); // You must uncommented this for the youtubeGET(search) to work!
+    // $(this).attr("src", $(this).attr("data-animate")); // You must uncomment this for the giphyGET() to work!
     $(this).attr("data-state", "animate");
-    console.log("state: animate");
   } else {
-    $(this).show();
-    $("#" + vidId).hide();
-    // $(this).attr("src", $(this).attr("data-still"));
+    if ($("#giphy").is(":checked")) {
+      $(this).attr("src", $(this).attr("data-still")); // You must uncomment this for the giphyGET() to work!
+    } else if ($("#youtube").is(":checked")) {
+      $(this).show(); // You must uncommented this for the youtubeGET(search) to work!
+      $("#" + vidId).hide(); // You must uncommented this for the youtubeGET(search) to work!
+    }
+
+    // $(this).show(); // You must uncommented this for the youtubeGET(search) to work!
+    // $("#" + vidId).hide(); // You must uncommented this for the youtubeGET(search) to work!
+    // $(this).attr("src", $(this).attr("data-still")); // You must uncomment this for the giphyGET() to work!
     $(this).attr("data-state", "still");
-    console.log("state: still");
   }
 });
 

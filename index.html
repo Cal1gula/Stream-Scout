@@ -34,9 +34,19 @@
                     </li>
                 </ul>
                 <span class="nav-item navbar-text">
-                    <a class="nav-link" href="#">
+
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="giphy" autocomplete="off"> Giphy
+                        </label>
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="youtube" autocomplete="off" checked> YouTube
+                        </label>
+                    </div>
+
+                    <!-- <a class="nav-link" href="#">
                         <i class="fab fa-twitch fa-lg"></i>&nbsp; Login
-                    </a>
+                    </a> -->
                 </span>
 
             </div>
@@ -55,7 +65,7 @@
                     </a>
                     <!-- Search options drop down -->
                     <div class="collapse" id="menu1" data-parent="#sidebar">
-                        <a href="#" class="list-group-item">
+                        <!-- <a href="#" class="list-group-item">
                             <i class="fas fa-user"></i>
                             <span class="d-none d-md-inline">Username</span>
                         </a>
@@ -70,7 +80,7 @@
                         <a href="#" class="list-group-item">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="d-none d-md-inline">Schedule</span>
-                        </a>
+                        </a> -->
                         <span class="list-group-item">
                             <form>
                                 <input type="text" id="search-input" placeholder="Search.." name="search">
@@ -83,7 +93,7 @@
                     <!-- End search bar -->
 
                     <!-- Start My Profile -->
-                    <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                    <!-- <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <span class="d-none d-md-inline">My Profile</span>
                     </a>
@@ -96,7 +106,7 @@
                             <i class="fas fa-user-plus"></i>
                             <span class="d-none d-md-inline">Sign Up</span>
                         </a>
-                    </div>
+                    </div> -->
                     <!-- End My Profile -->
 
                     <!-- Start Favorites -->
@@ -128,16 +138,7 @@
                 <!-- Search results -->
                 <div class="row" id="searchResults">
 
-                    <!-- Example of the JS generated layout: -->
-                    <div class="col-sx-12 col-md-3 thumbnail" id="fav123">
-                        <div class="favOverlay favOverlayHide">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <img src="assets/images/draaxx.jpg" alt="Draaxx" style="width:100%">
-                        <div class="caption">
-                            <p>DraaxxTV - Web Dev and PUBG</p>
-                        </div>
-                    </div>
+                    <!-- JS generated search results: -->
 
                 </div>
                 <!-- End Search results -->
