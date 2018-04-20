@@ -11,13 +11,9 @@ var searches = [
 // Sets savedHistory as our localStorage variable
 var savedHistory = JSON.parse(localStorage.getItem("history"));
 
-// Checks to see if savedHistory is currently an array, if not sets it to the value of searches and saves it to the localStorage
-if (!Array.isArray(savedHistory)) {
-  localStorage.setItem("history", JSON.stringify(searches));
-}
-
 // Render the favorites list
 function renderHistory() {
+  savedHistory = JSON.parse(localStorage.getItem("history"));
   // Delete previous searches to prevent duplicates)
   $("#pastSearches").empty();
 
@@ -256,5 +252,10 @@ $("body").on("click", ".gif", function() {
 });
 
 $(document).ready(function() {
+  // Checks to see if savedHistory is currently an array, if not sets it to the value of searches and saves it to the localStorage
+  if (!Array.isArray(savedHistory)) {
+    localStorage.setItem("history", JSON.stringify(searches));
+  }
+  // Calls the function to populate the history tab
   renderHistory();
 });
