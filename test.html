@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Stream Scout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
@@ -16,308 +16,132 @@
         crossorigin="anonymous"></script>
 
     <!-- App specific styling -->
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" /> -->
-    <style>
-        #sidebar {
-            overflow: hidden;
-            z-index: 3;
-        }
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
-        #sidebar .list-group {
-            min-width: 400px;
-            background-color: #333;
-            min-height: 100vh;
-        }
-
-        #sidebar i {
-            margin-right: 6px;
-        }
-
-        #sidebar .list-group-item {
-            border-radius: 0;
-            background-color: #333;
-            color: #ccc;
-            border-left: 0;
-            border-right: 0;
-            border-color: #2c2c2c;
-            white-space: nowrap;
-        }
-
-        /* highlight active menu */
-
-        #sidebar .list-group-item:not(.collapsed) {
-            background-color: #222;
-        }
-
-        /* closed state */
-
-        #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-            content: " \f0d7";
-            font-family: FontAwesome;
-            display: inline;
-            text-align: right;
-            padding-left: 5px;
-        }
-
-        /* open state */
-
-        #sidebar .list-group .list-group-item[aria-expanded="true"] {
-            background-color: #222;
-        }
-
-        #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-            content: " \f0da";
-            font-family: FontAwesome;
-            display: inline;
-            text-align: right;
-            padding-left: 5px;
-        }
-
-        /* level 1*/
-
-        #sidebar .list-group .collapse .list-group-item,
-        #sidebar .list-group .collapsing .list-group-item {
-            padding-left: 20px;
-        }
-
-        /* level 2*/
-
-        #sidebar .list-group .collapse>.collapse .list-group-item,
-        #sidebar .list-group .collapse>.collapsing .list-group-item {
-            padding-left: 30px;
-        }
-
-        /* level 3*/
-
-        #sidebar .list-group .collapse>.collapse>.collapse .list-group-item {
-            padding-left: 40px;
-        }
-
-        @media (max-width:768px) {
-            #sidebar {
-                min-width: 35px;
-                max-width: 40px;
-                overflow-y: auto;
-                overflow-x: visible;
-                transition: all 0.25s ease;
-                transform: translateX(-45px);
-                position: fixed;
-            }
-
-            #sidebar.show {
-                transform: translateX(0);
-            }
-
-            #sidebar::-webkit-scrollbar {
-                width: 0px;
-            }
-
-            #sidebar,
-            #sidebar .list-group {
-                min-width: 35px;
-                overflow: visible;
-            }
-            /* overlay sub levels on small screens */
-            #sidebar .list-group .collapse.show,
-            #sidebar .list-group .collapsing {
-                position: relative;
-                z-index: 1;
-                width: 190px;
-                top: 0;
-            }
-            #sidebar .list-group>.list-group-item {
-                text-align: center;
-                padding: .75rem .5rem;
-            }
-            /* hide caret icons of top level when collapsed */
-            #sidebar .list-group>.list-group-item[aria-expanded="true"]::after,
-            #sidebar .list-group>.list-group-item[aria-expanded="false"]::after {
-                display: none;
-            }
-        }
-
-        .collapse.show {
-            visibility: visible;
-        }
-
-        .collapsing {
-            visibility: visible;
-            height: 0;
-            -webkit-transition-property: height, visibility;
-            transition-property: height, visibility;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-        }
-
-        .collapsing.width {
-            -webkit-transition-property: width, visibility;
-            transition-property: width, visibility;
-            width: 0;
-            height: 100%;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- NAV Bar -->
     <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <h4 class="text-white">Collapsed content</h4>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
-            </div>
-        </div>
         <nav class="navbar navbar-dark bg-dark">
-            <a href="#" data-target="#sidebar" data-toggle="collapse">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <span class="navbar-brand mb-0 h1 text-right">Stream Scout</span>
+            <div class="container-fluid" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link navbar-brand" href="#" data-target="#sidebar" data-toggle="collapse">
+                            <i class="fas fa-bars"></i>&nbsp; Stream Scout
+                        </a>
+                    </li>
+                </ul>
+                <span class="nav-item navbar-text">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-twitch fa-lg"></i>&nbsp; Login
+                    </a>
+                </span>
+
+            </div>
         </nav>
     </div>
 
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                <!-- Search Button -->
                 <div class="list-group border-0 card text-center text-md-left">
                     <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-dashboard"></i>
-                        <span class="d-none d-md-inline">Item 1</span>
+                        <i class="fas fa-search"></i>
+                        <span class="d-none d-md-inline">Search</span>
                     </a>
+                    <!-- Search options drop down -->
                     <div class="collapse" id="menu1" data-parent="#sidebar">
-                        <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
-                        <div class="collapse" id="menu1sub1" data-parent="#menu1">
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem a</a>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem b</a>
-                            <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem c </a>
-                            <div class="collapse" id="menu1sub1sub1">
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.1</a>
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.2</a>
-                            </div>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem d</a>
-                            <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem e </a>
-                            <div class="collapse" id="menu1sub1sub2">
-                                <a href="#" class="list-group-item">Subitem e.1</a>
-                                <a href="#" class="list-group-item">Subitem e.2</a>
-                            </div>
-                        </div>
-                        <a href="#menu1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 2</a>
-                        <div class="collapse" id="menu1sub2" data-parent="#menu1">
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
-                            <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3 c </a>
-                            <div class="collapse" id="menu1sub1sub1">
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
-                            </div>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
-                            <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 5 e </a>
-                            <div class="collapse" id="menu1sub1sub2">
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
-                                <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
-                            </div>
-                        </div>
-                        <a href="#" class="list-group-item">Subitem 3</a>
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-user"></i>
+                            <span class="d-none d-md-inline">Username</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span class="d-none d-md-inline">Currently Playing</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-video"></i>
+                            <span class="d-none d-md-inline">Online</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="d-none d-md-inline">Schedule</span>
+                        </a>
+                        <span class="list-group-item">
+                            <form>
+                                <input type="text" id="search-input" placeholder="Search.." name="search">
+                                <button type="submit" id="add-search">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </span>
                     </div>
-                    <a href="#" class="list-group-item d-inline-block collapsed">
-                        <i class="fa fa-film"></i>
-                        <span class="d-none d-md-inline">Item 2</span>
+                    <!-- End search bar -->
+
+                    <!-- Start My Profile -->
+                    <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span class="d-none d-md-inline">My Profile</span>
                     </a>
+                    <div class="collapse" id="menu2" data-parent="#sidebar">
+                        <a href="#" class="list-group-item" data-parent="#menu2">
+                            <i class="fab fa-twitch"></i>
+                            <span class="d-none d-md-inline">Login with Twitch</span>
+                        </a>
+                        <a href="#" class="list-group-item" data-parent="#menu2">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="d-none d-md-inline">Sign Up</span>
+                        </a>
+                    </div>
+                    <!-- End My Profile -->
+
+                    <!-- Start Favorites -->
                     <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                        <span class="d-none d-md-inline">Item 3 </span>
+                        <i class="fas fa-heart"></i>
+                        <span class="d-none d-md-inline">Favorites</span>
                     </a>
                     <div class="collapse" id="menu3" data-parent="#sidebar">
-                        <a href="#" class="list-group-item" data-parent="#menu3">3.1</a>
-                        <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
-                        <div class="collapse" id="menu3sub2">
-                            <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 a</a>
-                            <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 b</a>
-                            <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 c</a>
+                        <!-- Put previous search results here -->
+                        <div id="pastSearches">
+                            <!-- JS Generated searches goes here -->
                         </div>
-                        <a href="#" class="list-group-item" data-parent="#menu3">3.3</a>
                     </div>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-heart"></i>
-                        <span class="d-none d-md-inline">Item 4</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-list"></i>
-                        <span class="d-none d-md-inline">Item 5</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-clock-o"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-th"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-gear"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-calendar"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-envelope"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-bar-chart-o"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-                        <i class="fa fa-star"></i>
-                        <span class="d-none d-md-inline">Link</span>
-                    </a>
+                    <!-- End Favorites -->
                 </div>
             </div>
+
+            <!-- Main Page Content Window -->
             <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+
+                <!-- Page header -->
                 <div class="page-header">
-                    <h2>Stream Scount</h2>
+                    <h2>Stream Scout</h2>
                 </div>
-                <p class="lead">Find streamers you want to see, not who everyone else is watching.</p>
+                <p class="lead">Find streamers you want to see, not just the most popular.</p>
                 <hr>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <button role="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo" aria-expanded="true">
-                            horizontal collapsible
-                        </button>
-                        <div id="demo" class="width collapse show" aria-expanded="true">
-                            <div class="list-group" style="width:400px">
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <button role="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo2" aria-expanded="true">
-                            vertical collapsible
-                        </button>
-                        <div id="demo2" class="height collapse show" aria-expanded="true">
-                            <div>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                                    at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Search results -->
+                <div class="row" id="searchResults">
+
+                    <!-- Example of the JS generated layout:
+                        <div class="col-sx-12 col-md-3 thumbnail">
+                                <img src="assets/images/draaxx.jpg" alt="Draaxx" style="width:100%">
+                                <div class="caption">
+                                    <p>DraaxxTV - Web Dev and PUBG</p>
+                                </div>
+                        </div> -->
+
                 </div>
+                <!-- End Search results -->
             </main>
         </div>
     </div>
 
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
@@ -325,7 +149,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
     <!-- Javascript file -->
-    <!-- <script src="assets/javascript/app.js"></script> -->
+    <script src="assets/javascript/app.js"></script>
     <script>
     </script>
 </body>

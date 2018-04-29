@@ -1,3 +1,14 @@
+.favOverlay {
+  color: orange;
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+
+.favOverlayHide {
+  visibility: hidden;
+}
+
 #sidebar {
   overflow: hidden;
   z-index: 3;
@@ -6,7 +17,7 @@
 #sidebar .list-group {
   min-width: 400px;
   background-color: #333;
-  min-height: 100vh;
+  min-height: 91.75vh;
 }
 
 #sidebar i {
@@ -32,7 +43,7 @@
 /* closed state */
 
 #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-  content: " \f0d7";
+  /* content: " \f0d7"; */
   font-family: FontAwesome;
   display: inline;
   text-align: right;
@@ -46,7 +57,7 @@
 }
 
 #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-  content: " \f0da";
+  /* content: " \f0da"; */
   font-family: FontAwesome;
   display: inline;
   text-align: right;
