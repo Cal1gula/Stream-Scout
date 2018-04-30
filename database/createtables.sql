@@ -19,3 +19,4 @@ create table UsersFollows (
 from_id integer references Users (id),
 to_id integer references Users (id),
 followed_at	datetime not null
+);
